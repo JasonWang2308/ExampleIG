@@ -1,0 +1,16 @@
+{
+  "codeSystems" : [
+    {
+      "url" : "http://example.org/ValueSet/assessment-side-valueset",
+      "version" : "0.1.0",
+      "status" : "draft",
+      "name" : "AssessmentSideValueSet",
+      "title" : "評估側別選項",
+      "description" : "ARAT評估時選擇左側或右側的選項",
+      "systems" : ["http://snomed.info/sct"],
+      "uses" : {
+      },
+      "StructureDefinition-ARATQuestionnaireResponse.html" : "ARAT上肢功能評估問卷回覆"
+    }
+  ]
+}

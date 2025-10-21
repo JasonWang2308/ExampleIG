@@ -1,0 +1,2 @@
+URL,Version,Status,OIDs,Name,Title,Descriptino,Uses,Used,Sources
+http://example.org/ValueSet/assessment-side-valueset,0.1.0,draft,,AssessmentSideValueSet,評估側別選項,"ARAT評估時選擇左側或右側的選項",,"SCT"

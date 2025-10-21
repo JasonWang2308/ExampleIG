@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="c3a2438d-1c1c-47f8-b999-08439bdef315"/>
+  <meta>
+    <lastUpdated value="2025-10-21T09:33:43.730+08:00"/>
+  </meta>
+  <type value="collection"/>
+  <entry>
+    <fullUrl value="http://example.org/ValueSet/assessment-side-valueset"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">
+            <p class="res-header-id"/>
+            <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion from tx.fhir.org based on SNOMED CT International edition 01-2月 2025
+              <span class="copy-text-inline">
+                <button data-clipboard-text="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201" title="Click to Copy URL" class="btn-copy"> </button>
+              </span>
+            </p>
+            <p>This value set contains 2 concepts</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Code</b>
+                </td>
+                <td>
+                  <b>Display (en)</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://snomed.info/sct-24028007"> </a>
+                  <code>http://snomed.info/sct</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="http://snomed.info/id/24028007">24028007</a>
+                </td>
+                <td>Right</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://snomed.info/sct&quot;, &quot;version&quot;: &quot;http://snomed.info/sct/900000000000207008/version/20250201&quot;, &quot;code&quot;: &quot;24028007&quot;, &quot;display&quot;: &quot;Right&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://snomed.info/sct&quot;&gt;&lt;version value=&quot;http://snomed.info/sct/900000000000207008/version/20250201&quot;&gt;&lt;code value=&quot;24028007&quot;&gt;&lt;display value=&quot;Right&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-http://snomed.info/sct-7771000"> </a>
+                  <code>http://snomed.info/sct</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="http://snomed.info/id/7771000">7771000</a>
+                </td>
+                <td>Left</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;http://snomed.info/sct&quot;, &quot;version&quot;: &quot;http://snomed.info/sct/900000000000207008/version/20250201&quot;, &quot;code&quot;: &quot;7771000&quot;, &quot;display&quot;: &quot;Left&quot;}" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;http://snomed.info/sct&quot;&gt;&lt;version value=&quot;http://snomed.info/sct/900000000000207008/version/20250201&quot;&gt;&lt;code value=&quot;7771000&quot;&gt;&lt;display value=&quot;Left&quot;&gt;&lt;/coding&gt;" title="Click to Copy as Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="http://example.org/ValueSet/assessment-side-valueset"/>
+        <version value="0.1.0"/>
+        <name value="AssessmentSideValueSet"/>
+        <title value="評估側別選項"/>
+        <status value="draft"/>
+        <date value="2025-10-21T09:33:18+08:00"/>
+        <expansion>
+          <identifier value="urn:uuid:138ffbd6-f398-4caa-83d7-dd2039b347d2"/>
+          <timestamp value="2025-10-21T09:34:16+08:00"/>
+          <total value="2"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="en"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-valueset"/>
+            <valueUri value="null"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"/>
+          </parameter>
+          <parameter>
+            <name value="version"/>
+            <valueUri value="http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"/>
+          </parameter>
+          <contains>
+            <system value="http://snomed.info/sct"/>
+            <code value="24028007"/>
+            <display value="Right"/>
+          </contains>
+          <contains>
+            <system value="http://snomed.info/sct"/>
+            <code value="7771000"/>
+            <display value="Left"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+</Bundle>

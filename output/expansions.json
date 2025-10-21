@@ -1,0 +1,68 @@
+{
+  "resourceType" : "Bundle",
+  "id" : "c3a2438d-1c1c-47f8-b999-08439bdef315",
+  "meta" : {
+    "lastUpdated" : "2025-10-21T09:33:43.730+08:00"
+  },
+  "type" : "collection",
+  "entry" : [{
+    "fullUrl" : "http://example.org/ValueSet/assessment-side-valueset",
+    "resource" : {
+      "resourceType" : "ValueSet",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"/><p style=\"border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px\">Expansion from tx.fhir.org based on SNOMED CT International edition 01-2月 2025<span class=\"copy-text-inline\"><button data-clipboard-text=\"http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201\" title=\"Click to Copy URL\" class=\"btn-copy\"> </button></span></p><p>This value set contains 2 concepts</p><table class=\"codes\" data-fhir=\"generated\"><tr><td><b>System</b></td><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display (en)</b></td><td><b>JSON</b></td><td><b>XML</b></td></tr><tr><td><a name=\"x-http://snomed.info/sct-24028007\"> </a><code>http://snomed.info/sct</code></td><td style=\"white-space:nowrap\">\u00a0\u00a0<a href=\"http://snomed.info/id/24028007\">24028007</a></td><td>Right</td><td><span class=\"copy-text-inline\"><button data-clipboard-text=\"{&quot;system&quot;: &quot;http://snomed.info/sct&quot;, &quot;version&quot;: &quot;http://snomed.info/sct/900000000000207008/version/20250201&quot;, &quot;code&quot;: &quot;24028007&quot;, &quot;display&quot;: &quot;Right&quot;}\" title=\"Click to Copy as Coding\" class=\"btn-copy\"> </button></span></td><td><span class=\"copy-text-inline\"><button data-clipboard-text=\"&lt;coding&gt;&lt;system value=&quot;http://snomed.info/sct&quot;&gt;&lt;version value=&quot;http://snomed.info/sct/900000000000207008/version/20250201&quot;&gt;&lt;code value=&quot;24028007&quot;&gt;&lt;display value=&quot;Right&quot;&gt;&lt;/coding&gt;\" title=\"Click to Copy as Coding\" class=\"btn-copy\"> </button></span></td></tr><tr><td><a name=\"x-http://snomed.info/sct-7771000\"> </a><code>http://snomed.info/sct</code></td><td style=\"white-space:nowrap\">\u00a0\u00a0<a href=\"http://snomed.info/id/7771000\">7771000</a></td><td>Left</td><td><span class=\"copy-text-inline\"><button data-clipboard-text=\"{&quot;system&quot;: &quot;http://snomed.info/sct&quot;, &quot;version&quot;: &quot;http://snomed.info/sct/900000000000207008/version/20250201&quot;, &quot;code&quot;: &quot;7771000&quot;, &quot;display&quot;: &quot;Left&quot;}\" title=\"Click to Copy as Coding\" class=\"btn-copy\"> </button></span></td><td><span class=\"copy-text-inline\"><button data-clipboard-text=\"&lt;coding&gt;&lt;system value=&quot;http://snomed.info/sct&quot;&gt;&lt;version value=&quot;http://snomed.info/sct/900000000000207008/version/20250201&quot;&gt;&lt;code value=&quot;7771000&quot;&gt;&lt;display value=&quot;Left&quot;&gt;&lt;/coding&gt;\" title=\"Click to Copy as Coding\" class=\"btn-copy\"> </button></span></td></tr></table></div>"
+      },
+      "url" : "http://example.org/ValueSet/assessment-side-valueset",
+      "version" : "0.1.0",
+      "name" : "AssessmentSideValueSet",
+      "title" : "評估側別選項",
+      "status" : "draft",
+      "date" : "2025-10-21T09:33:18+08:00",
+      "expansion" : {
+        "identifier" : "urn:uuid:138ffbd6-f398-4caa-83d7-dd2039b347d2",
+        "timestamp" : "2025-10-21T09:34:16+08:00",
+        "total" : 2,
+        "offset" : 0,
+        "parameter" : [{
+          "name" : "displayLanguage",
+          "valueCode" : "en"
+        },
+        {
+          "name" : "count",
+          "valueInteger" : 1000
+        },
+        {
+          "name" : "offset",
+          "valueInteger" : 0
+        },
+        {
+          "name" : "excludeNested",
+          "valueBoolean" : false
+        },
+        {
+          "name" : "used-valueset",
+          "valueUri" : "null"
+        },
+        {
+          "name" : "used-codesystem",
+          "valueUri" : "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"
+        },
+        {
+          "name" : "version",
+          "valueUri" : "http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20250201"
+        }],
+        "contains" : [{
+          "system" : "http://snomed.info/sct",
+          "code" : "24028007",
+          "display" : "Right"
+        },
+        {
+          "system" : "http://snomed.info/sct",
+          "code" : "7771000",
+          "display" : "Left"
+        }]
+      }
+    }
+  }]
+}

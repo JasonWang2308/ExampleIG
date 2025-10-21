@@ -1,0 +1,104 @@
+ExampleIG : Validation Results
+=========================================
+
+err = 3, warn = 9, info = 2
+IG Publisher Version: 2.0.21
+Generated Tue Oct 21 09:35:21 CST 2025. FHIR version 4.0.1 for fhir.example#0.1.0 (canonical = http://example.org)
+ Build Errors : 63 / 4 / 0
+ C:\Users\USER\Desktop\IGtest\ExampleIG\fsh-generated\resources\ImplementationGuide-fhir.example : 0 / 0 / 1
+ C:\Users\USER\Desktop\IGtest\ExampleIG\fsh-generated\resources\Patient-PatientExample : 0 / 0 / 1
+ C:\Users\USER\Desktop\IGtest\ExampleIG\fsh-generated\resources\QuestionnaireResponse-arat-response-example-001 : 3 / 1 / 2
+ C:\Users\USER\Desktop\IGtest\ExampleIG\fsh-generated\resources\StructureDefinition-ARATQuestionnaireResponse : 0 / 0 / 2
+ C:\Users\USER\Desktop\IGtest\ExampleIG\fsh-generated\resources\StructureDefinition-MyPatient : 0 / 0 / 1
+ C:\Users\USER\Desktop\IGtest\ExampleIG\fsh-generated\resources\StructureDefinition-SPACQuestionnaire : 0 / 1 / 1
+ C:\Users\USER\Desktop\IGtest\ExampleIG\fsh-generated\resources\StructureDefinition-SPACQuestionnaireResponse : 0 / 1 / 1
+ C:\Users\USER\Desktop\IGtest\ExampleIG\fsh-generated\resources\StructureDefinition-test-time-extension : 0 / 1 / 1
+ C:\Users\USER\Desktop\IGtest\ExampleIG\fsh-generated\resources\ValueSet-assessment-side-valueset : 0 / 1 / 1
+</table>
+== n/a ==
+ERROR: Patient-PatientExample.change.history.html#/html/body/div/div/div/p/a at Line 186, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: Patient-PatientExample.html#/html/body/div/div/div/p/a at Line 195, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: Patient-PatientExample.json.html#/html/body/div/div/div/p/a at Line 215, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: Patient-PatientExample.ttl.html#/html/body/div/div/div/p/a at Line 222, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: Patient-PatientExample.xml.html#/html/body/div/div/div/p/a at Line 209, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: QuestionnaireResponse-arat-response-example-001.change.history.html#/html/body/div/div/div/p/a at Line 186, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: QuestionnaireResponse-arat-response-example-001.html#/html/body/div/div/div/p/a at Line 231, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: QuestionnaireResponse-arat-response-example-001.json.html#/html/body/div/div/div/p/a at Line 586, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: QuestionnaireResponse-arat-response-example-001.ttl.html#/html/body/div/div/div/p/a at Line 477, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: QuestionnaireResponse-arat-response-example-001.xml.html#/html/body/div/div/div/p/a at Line 531, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-ARATQuestionnaireResponse-definitions.html#/html/body/div/div/div/p/a at Line 5761, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-ARATQuestionnaireResponse-examples.html#/html/body/div/div/div/p/a at Line 254, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-ARATQuestionnaireResponse-mappings.html#/html/body/div/div/div/p/a at Line 5892, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-ARATQuestionnaireResponse-testing.html#/html/body/div/div/div/p/a at Line 250, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-ARATQuestionnaireResponse.html#/html/body/div/div/div/p/a at Line 21207, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-ARATQuestionnaireResponse.profile.history.html#/html/body/div/div/div/p/a at Line 232, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-ARATQuestionnaireResponse.profile.json.html#/html/body/div/div/div/p/a at Line 34091, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-ARATQuestionnaireResponse.profile.ttl.html#/html/body/div/div/div/p/a at Line 24865, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-ARATQuestionnaireResponse.profile.xml.html#/html/body/div/div/div/p/a at Line 32022, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-MyPatient-definitions.html#/html/body/div/div/div/p/a at Line 542, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-MyPatient-examples.html#/html/body/div/div/div/p/a at Line 254, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-MyPatient-mappings.html#/html/body/div/div/div/p/a at Line 756, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-MyPatient-testing.html#/html/body/div/div/div/p/a at Line 250, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-MyPatient.html#/html/body/div/div/div/p/a at Line 2071, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-MyPatient.profile.history.html#/html/body/div/div/div/p/a at Line 232, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-MyPatient.profile.json.html#/html/body/div/div/div/p/a at Line 2462, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-MyPatient.profile.ttl.html#/html/body/div/div/div/p/a at Line 1871, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-MyPatient.profile.xml.html#/html/body/div/div/div/p/a at Line 2307, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-SPACQuestionnaire-definitions.html#/html/body/div/div/div/p/a at Line 696, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-SPACQuestionnaire-examples.html#/html/body/div/div/div/p/a at Line 233, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-SPACQuestionnaire-mappings.html#/html/body/div/div/div/p/a at Line 971, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-SPACQuestionnaire-testing.html#/html/body/div/div/div/p/a at Line 240, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-SPACQuestionnaire.html#/html/body/div/div/div/p/a at Line 3857, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-SPACQuestionnaire.profile.history.html#/html/body/div/div/div/p/a at Line 222, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-SPACQuestionnaire.profile.json.html#/html/body/div/div/div/p/a at Line 3455, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-SPACQuestionnaire.profile.ttl.html#/html/body/div/div/div/p/a at Line 2595, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-SPACQuestionnaire.profile.xml.html#/html/body/div/div/div/p/a at Line 3229, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-SPACQuestionnaireResponse-definitions.html#/html/body/div/div/div/p/a at Line 620, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-SPACQuestionnaireResponse-examples.html#/html/body/div/div/div/p/a at Line 233, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-SPACQuestionnaireResponse-mappings.html#/html/body/div/div/div/p/a at Line 607, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-SPACQuestionnaireResponse-testing.html#/html/body/div/div/div/p/a at Line 240, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-SPACQuestionnaireResponse.html#/html/body/div/div/div/p/a at Line 2581, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-SPACQuestionnaireResponse.profile.history.html#/html/body/div/div/div/p/a at Line 222, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-SPACQuestionnaireResponse.profile.json.html#/html/body/div/div/div/p/a at Line 2713, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-SPACQuestionnaireResponse.profile.ttl.html#/html/body/div/div/div/p/a at Line 2054, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-SPACQuestionnaireResponse.profile.xml.html#/html/body/div/div/div/p/a at Line 2519, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-test-time-extension-definitions.html#/html/body/div/div/div/p/a at Line 299, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-test-time-extension-mappings.html#/html/body/div/div/div/p/a at Line 253, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-test-time-extension-testing.html#/html/body/div/div/div/p/a at Line 240, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-test-time-extension.html#/html/body/div/div/div/p/a at Line 626, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-test-time-extension.profile.history.html#/html/body/div/div/div/p/a at Line 222, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-test-time-extension.profile.json.html#/html/body/div/div/div/p/a at Line 514, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-test-time-extension.profile.ttl.html#/html/body/div/div/div/p/a at Line 458, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: StructureDefinition-test-time-extension.profile.xml.html#/html/body/div/div/div/p/a at Line 472, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: ValueSet-assessment-side-valueset-testing.html#/html/body/div/div/div/p/a at Line 217, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: ValueSet-assessment-side-valueset.change.history.html#/html/body/div/div/div/p/a at Line 186, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: ValueSet-assessment-side-valueset.html#/html/body/div/div/div/p/a at Line 286, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: ValueSet-assessment-side-valueset.json.html#/html/body/div/div/div/p/a at Line 253, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: ValueSet-assessment-side-valueset.ttl.html#/html/body/div/div/div/p/a at Line 251, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: ValueSet-assessment-side-valueset.xml.html#/html/body/div/div/div/p/a at Line 245, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: artifacts.html#/html/body/div/div/div/p/a at Line 270, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: index.html#/html/body/div/div/div/p/a at Line 200, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+ERROR: toc.html#/html/body/div/div/div/p/a at Line 142, column 28: The link 'http://example.org/example-publisher' for "Example Publisher" cannot be resolved
+WARNING: 1: The HTML fragment 'ip-statements.xhtml' is not included anywhere in the produced implementation guide
+WARNING: 2: An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide
+WARNING: 3: An HTML fragment from the set [dependency-table.xhtml, dependency-table-short.xhtml, dependency-table-nontech.xhtml] is not included anywhere in the produced implementation guide
+WARNING: 4: The HTML fragment 'globals-table.xhtml' is not included anywhere in the produced implementation guide
+== fsh-generated\resources\ImplementationGuide-fhir.example.json ==
+== fsh-generated\resources\Patient-PatientExample.json ==
+== fsh-generated\resources\QuestionnaireResponse-arat-response-example-001.json ==
+ERROR: QuestionnaireResponse/arat-response-example-001: QuestionnaireResponse.subject: Unable to resolve resource with reference 'Patient/stroke-patient-001'
+ERROR: QuestionnaireResponse/arat-response-example-001: QuestionnaireResponse.author: Unable to resolve resource with reference 'Practitioner/ot-therapist-001'
+ERROR: QuestionnaireResponse/arat-response-example-001: QuestionnaireResponse.item[0].answer[0].value.ofType(Coding).display: Wrong Display Name '患者左側' for http://snomed.info/sct#24028007. Valid display is one of 6 choices: 'Right' (en), 'Right lateral' (en), 'Dextro' (en), 'Right (qualifier value)' (en), 'Rt - Right' (en) or 'Right side' (en) (for the language(s) 'en-US')
+INFORMATION: QuestionnaireResponse/arat-response-example-001: QuestionnaireResponse: The questionnaire 'http://example.org/fhir/Questionnaire/arat-questionnaire' could not be resolved, so no validation can be performed against the base questionnaire
+WARNING: QuestionnaireResponse/arat-response-example-001: QuestionnaireResponse.meta.profile[1]: Profile reference 'http://example.org/fhir/StructureDefinition/arat-questionnaire-response' has not been checked because it could not be found, and the validator is set to not fetch unknown profiles
+== fsh-generated\resources\StructureDefinition-ARATQuestionnaireResponse.json ==
+INFORMATION: StructureDefinition/ARATQuestionnaireResponse: StructureDefinition.snapshot.element[4].binding.extension[0]: The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.2.0 is deprecated
+== fsh-generated\resources\StructureDefinition-MyPatient.json ==
+== fsh-generated\resources\StructureDefinition-SPACQuestionnaire.json ==
+WARNING: StructureDefinition.where(url = 'http://example.org/StructureDefinition/SPACQuestionnaire'): The Implementation Guide contains no examples for this profile
+== fsh-generated\resources\StructureDefinition-SPACQuestionnaireResponse.json ==
+WARNING: StructureDefinition.where(url = 'http://example.org/StructureDefinition/SPACQuestionnaireResponse'): The Implementation Guide contains no examples for this profile
+== fsh-generated\resources\StructureDefinition-test-time-extension.json ==
+WARNING: StructureDefinition.where(url = 'http://example.org/StructureDefinition/test-time-extension'): The Implementation Guide contains no examples for this extension
+== fsh-generated\resources\ValueSet-assessment-side-valueset.json ==
+WARNING: ValueSet/assessment-side-valueset: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present

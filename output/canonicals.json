@@ -1,0 +1,51 @@
+[
+  {
+    "id" : "fhir.example",
+    "type" : "ImplementationGuide",
+    "url" : "http://example.org/ImplementationGuide/fhir.example",
+    "version" : "0.1.0",
+    "name" : "ExampleIG"
+  },
+  {
+    "id" : "ARATQuestionnaireResponse",
+    "type" : "StructureDefinition",
+    "url" : "http://example.org/StructureDefinition/ARATQuestionnaireResponse",
+    "version" : "0.1.0",
+    "name" : "ARATQuestionnaireResponse"
+  },
+  {
+    "id" : "MyPatient",
+    "type" : "StructureDefinition",
+    "url" : "http://example.org/StructureDefinition/MyPatient",
+    "version" : "0.1.0",
+    "name" : "MyPatient"
+  },
+  {
+    "id" : "SPACQuestionnaire",
+    "type" : "StructureDefinition",
+    "url" : "http://example.org/StructureDefinition/SPACQuestionnaire",
+    "version" : "0.1.0",
+    "name" : "SPACQuestionnaire"
+  },
+  {
+    "id" : "SPACQuestionnaireResponse",
+    "type" : "StructureDefinition",
+    "url" : "http://example.org/StructureDefinition/SPACQuestionnaireResponse",
+    "version" : "0.1.0",
+    "name" : "SPACQuestionnaireResponse"
+  },
+  {
+    "id" : "test-time-extension",
+    "type" : "StructureDefinition",
+    "url" : "http://example.org/StructureDefinition/test-time-extension",
+    "version" : "0.1.0",
+    "name" : "TestTimeExtension"
+  },
+  {
+    "id" : "assessment-side-valueset",
+    "type" : "ValueSet",
+    "url" : "http://example.org/ValueSet/assessment-side-valueset",
+    "version" : "0.1.0",
+    "name" : "AssessmentSideValueSet"
+  }
+]

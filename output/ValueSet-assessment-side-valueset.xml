@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="assessment-side-valueset"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: ValueSet assessment-side-valueset</b></p><a name="assessment-side-valueset"> </a><a name="hcassessment-side-valueset"> </a><ul><li>Include these codes as defined in <a href="http://www.snomed.org/"><code>http://snomed.info/sct</code></a><span title="Version is not explicity stated. No matching Code System found"> version Not Stated (use latest from terminology server)</span><table class="none"><tr><td style="white-space:nowrap"><b>Code</b></td><td><b>Display</b></td></tr><tr><td><a href="http://snomed.info/id/24028007">24028007</a></td><td>患者左側</td></tr><tr><td><a href="http://snomed.info/id/7771000">7771000</a></td><td>患者右側</td></tr></table></li></ul></div>
+  </text>
+  <url value="http://example.org/ValueSet/assessment-side-valueset"/>
+  <version value="0.1.0"/>
+  <name value="AssessmentSideValueSet"/>
+  <title value="評估側別選項"/>
+  <status value="draft"/>
+  <date value="2025-10-21T09:33:18+08:00"/>
+  <publisher value="Example Publisher"/>
+  <contact>
+    <name value="Example Publisher"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://example.org/example-publisher"/>
+    </telecom>
+  </contact>
+  <description value="ARAT評估時選擇左側或右側的選項"/>
+  <compose>
+    <include>
+      <system value="http://snomed.info/sct"/>
+      <concept>
+        <code value="24028007"/>
+        <display value="患者左側"/>
+      </concept>
+      <concept>
+        <code value="7771000"/>
+        <display value="患者右側"/>
+      </concept>
+    </include>
+  </compose>
+</ValueSet>
