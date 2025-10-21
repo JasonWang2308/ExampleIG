@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Robohand App — Launch</title>
+  <style>
+    body{font-family:system-ui,ui-sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;margin:0;background:#f5f5f5;}
+    .card{background:white;padding:40px;border-radius:16px;box-shadow:0 4px 20px #00000022;text-align:center;width:320px}
+    h1{font-size:1.5rem;margin-bottom:16px}
+    button{padding:12px 20px;border-radius:10px;border:none;background:#0078D4;color:white;font-size:1rem;cursor:pointer}
+    button:hover{background:#005fa3}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Robohand App</h1>
+    <p>SMART on FHIR 授權登入</p>
+    <button id="launchBtn">啟動應用程式</button>
+  </div>
+
+<script>
+const CLIENT_ID = "smart-app-test"; // sandbox 預設可用 client_id
+const REDIRECT_URI = "http://127.0.0.1:8000/callback.html";
+const SCOPE = "launch openid fhirUser patient/*.read";
+const STATE = "12345"; // 任意字串
+
+document.getElementById("launchBtn").onclick = async () => {
+  const params = new URLSearchParams(window.location.search);
+  const iss = params.get("iss");
+  const launch = params.get("launch");
+
+  if (!iss) {
+    alert("缺少 iss 參數，請從 SMART Launcher 啟動");
+    return;
+  }
+
+  // 1️⃣ 取得 metadata 看授權伺服器在哪
+  const metadataUrl = `${iss}/.well-known/smart-configuration`;
+  const meta = await fetch(metadataUrl).then(r=>r.json()).catch(e=>({}));
+
+  if (!meta.authorization_endpoint) {
+    alert("無法從 FHIR server 取得授權端點");
+    console.error(meta);
+    return;
+  }
+
+  // 2️⃣ 組成 OAuth 授權網址
+  const authorizeUrl = `${meta.authorization_endpoint}?response_type=code`
+    + `&client_id=${encodeURIComponent(CLIENT_ID)}`
+    + `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}`
+    + `&scope=${encodeURIComponent(SCOPE)}`
+    + `&aud=${encodeURIComponent(iss)}`
+    + `&launch=${encodeURIComponent(launch)}`
+    + `&state=${STATE}`;
+
+  console.log("Redirecting to:", authorizeUrl);
+  window.location.href = authorizeUrl;
+};
+</script>
+</body>
+</html>
