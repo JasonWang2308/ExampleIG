@@ -1,190 +1,87 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Robohand App — 主頁</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:," />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ExampleIG — 病患資料儀表板</title>
+  <script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
   <style>
-    :root{
-      --brand:#6BBF59;      /* 抹茶綠主色 */
-      --brand-2:#5AA24A;    /* hover */
-      --ink:#234B23;        /* 深綠字 */
-      --bg:#f7f9f8;         /* 淺灰底 */
-      --panel:#ffffff;      /* 卡片白底 */
-      --muted:#666;
-      --radius:12px;
-      --shadow:0 2px 10px rgba(0,0,0,0.08);
-    }
-
-    body {
-      font-family:'Noto Sans TC', system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
-      margin:0; background:var(--bg); color:#333;
-    }
-
-    /* 頂部導覽列 */
-    header {
-      background:var(--panel);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      position: sticky; top: 0; z-index: 10;
-    }
-    .nav {
-      display:flex; align-items:center; justify-content:space-between;
-      padding:10px 24px; max-width:1100px; margin:0 auto;
-    }
-    .nav-left{ display:flex; align-items:center; gap:12px; }
-    .nav-left img{ height:40px; }
-    .nav-right{ font-size:14px; color:var(--brand); cursor:pointer; }
-
-    /* 搜尋區塊 */
-    .search-box{
-      display:flex; align-items:center; gap:12px;
-      margin:24px auto; max-width:1100px;
-      background:var(--panel); padding:16px 24px; border-radius:var(--radius);
-      box-shadow:var(--shadow);
-    }
-    .search-box input{
-      flex:1; padding:12px 14px; font-size:16px;
-      border:1px solid #ccc; border-radius:8px;
-    }
-    .search-box button{
-      background:var(--brand); color:white; border:none;
-      padding:12px 16px; border-radius:8px; cursor:pointer; transition:.15s;
-    }
-    .search-box button:hover{ background:var(--brand-2); }
-    #searchMsg{ margin-left:auto; color:#555; }
-
-    /* 病患列表（放大、更好點） */
-    .list{
-      max-width:1100px;         /* 與下方卡片同寬 */
-      margin:0 auto 16px auto;
-      background:var(--panel); border-radius:var(--radius);
-      box-shadow:var(--shadow); padding:12px;
-      max-height:480px;         /* 更高的可視區 */
-      overflow-y:auto;
-    }
-    .row{
-      display:flex; justify-content:space-between; align-items:center;
-      padding:14px 16px; min-height:64px;          /* 舒適列高 */
-      border-radius:12px; transition:background .15s;
-    }
-    .row:hover{ background:#E8F5E1; }
-    .info{ font-size:16px; line-height:1.25; }
-    .info strong{ font-size:17px; }
-    .meta{ font-size:12px; color:#666; }
-    .btn-view{
-      background:#A3D39C; color:var(--ink); border:none;
-      padding:10px 16px; font-size:15px; border-radius:8px; cursor:pointer;
-    }
-
-    /* 下方雙欄卡片 */
-    .grid{
-      display:grid; grid-template-columns:1fr 1fr; gap:20px;
-      max-width:1100px; margin:0 auto 36px auto;
-    }
-    @media (max-width: 900px){ .grid{ grid-template-columns:1fr; } }
-    .card{
-      background:var(--panel); padding:20px; border-radius:var(--radius); box-shadow:var(--shadow);
-    }
-    .card h3{ margin:0 0 12px 0; color:var(--ink); }
-    pre{
-      background:#f3f6f4; border-radius:8px; padding:12px;
-      font-size:17px;              /* 放大可讀 */
-      line-height:1.55; overflow-x:auto; margin:0;
-    }
+    body { font-family: system-ui, sans-serif; margin: 20px; background: #f8fafc; color: #222; }
+    h1 { text-align: center; }
+    .search-box { display:flex; gap:8px; margin:20px auto; justify-content:center; }
+    input { padding:8px; border-radius:6px; border:1px solid #ccc; min-width:200px; }
+    button { padding:8px 16px; border:none; background:#2563eb; color:white; border-radius:6px; cursor:pointer; }
+    button:hover { background:#1e40af; }
+    .row { background:white; margin:10px auto; max-width:600px; border-radius:10px; box-shadow:0 1px 4px rgba(0,0,0,0.1); padding:10px 15px; display:flex; justify-content:space-between; align-items:center; }
+    pre { background:#f1f5f9; padding:10px; border-radius:8px; overflow:auto; }
   </style>
 </head>
 <body>
+  <h1>🏥 ExampleIG 病患資料儀表板</h1>
 
-<header>
-  <div class="nav">
-    <div class="nav-left">
-      <!-- 請將這兩個檔案放在 /app 目錄 -->
-      <img src="logo_rehabotics.png" alt="Rehabotics">
-      <img src="logo_fubon.png" alt="富伯生醫" style="height:28px">
-    </div>
-    <div class="nav-right" id="logout">登出</div>
+  <div class="search-box">
+    <input id="kw" type="text" placeholder="輸入病人姓名..." />
+    <button id="btnSearch">搜尋</button>
   </div>
-</header>
 
-<!-- 搜尋 -->
-<div class="search-box">
-  <input id="kw" placeholder="輸入病患姓名關鍵字，例如：smith" />
-  <button id="btnSearch">搜尋</button>
-  <span id="searchMsg"></span>
-</div>
+  <div id="results"></div>
 
-<!-- 病患清單 -->
-<div class="list" id="results"><div style="padding:10px;color:#777">請輸入關鍵字搜尋</div></div>
+  <h2>🧍 病人資料</h2>
+  <pre id="summary">{ 尚未載入 }</pre>
 
-<!-- 下方資訊 -->
-<div class="grid">
-  <div class="card">
-    <h3>Patient Summary</h3>
-    <pre id="summary">{ 請選擇一位病人 }</pre>
-  </div>
-  <div class="card">
-    <h3>Latest ARAT</h3>
-    <pre id="arat">{ 請選擇一位病人 }</pre>
-  </div>
-</div>
+  <h2>🖐️ ARAT 結果</h2>
+  <pre id="arat">{ 尚未載入 }</pre>
 
-<script>
-const API = "http://127.0.0.1:5000/api";
-const $  = (q)=>document.querySelector(q);
-const fmt= (obj)=>JSON.stringify(obj,null,2);
+  <script>
+    const $ = (q) => document.querySelector(q);
+    const fmt = (o) => JSON.stringify(o, null, 2);
+    let client;
 
-$("#logout").onclick = ()=> location.href = "launch.html";
+    // 拿到授權後的 FHIR client
+    FHIR.oauth2.ready().then(c => { client = c; });
 
-$("#btnSearch").onclick = async () => {
-  const kw = $("#kw").value.trim();
-  $("#results").innerHTML = "<div style='padding:10px;color:#777'>搜尋中...</div>";
-  try{
-    const res = await fetch(`${API}/patient/search?name=${encodeURIComponent(kw)}&_count=10`);
-    const data = await res.json();
-    if(!data.patients?.length){
-      $("#results").innerHTML = "<div style='padding:10px;color:#777'>查無資料</div>";
-      $("#searchMsg").textContent = "";
-      return;
+    $("#btnSearch").onclick = async () => {
+      const kw = $("#kw").value.trim();
+      $("#results").innerHTML = "<p style='text-align:center;color:#777'>搜尋中...</p>";
+      try {
+        const bundle = await client.request(`Patient?name=${encodeURIComponent(kw)}&_count=5`, { flat: true });
+        const patients = (bundle.entry || []).map(e => e.resource);
+        if (!patients.length) {
+          $("#results").innerHTML = "<p style='text-align:center;color:#777'>查無資料</p>";
+          return;
+        }
+        $("#results").innerHTML = patients.map(p => `
+          <div class="row">
+            <div>
+              <strong>${(p.name?.[0]?.text) || "(無名)"}</strong><br>
+              性別：${p.gender || "—"}　出生日期：${p.birthDate || "—"}
+            </div>
+            <button onclick="loadPatient('${p.id}')">查看</button>
+          </div>
+        `).join('');
+      } catch (e) {
+        console.error(e);
+        $("#results").innerHTML = "<p style='color:#c00'>搜尋失敗</p>";
+      }
+    };
+
+    async function loadPatient(id) {
+      $("#summary").textContent = "載入中...";
+      $("#arat").textContent = "載入中...";
+      try {
+        const patient = await client.request(`Patient/${id}`);
+        $("#summary").textContent = fmt(patient);
+
+        // 嘗試讀取該病人最近的 QuestionnaireResponse（模擬 ARAT）
+        const qr = await client.request(`QuestionnaireResponse?subject=Patient/${id}&_sort=-_lastUpdated&_count=1`, { flat: true });
+        const latest = (qr.entry?.[0]?.resource) || { note: "未找到量表結果" };
+        $("#arat").textContent = fmt(latest);
+      } catch (e) {
+        $("#summary").textContent = "{ 讀取失敗 }";
+        $("#arat").textContent = "{ 讀取失敗 }";
+        console.error(e);
+      }
     }
-    $("#searchMsg").textContent = `共 ${data.count} 筆`;
-    $("#results").innerHTML = data.patients.map(p => `
-      <div class="row">
-        <div class="info">
-          <strong>${p.name || '(無名)'}</strong> — ${p.gender || ''} ${p.birthDate || ''}
-          <div class="meta">ID: ${p.id}</div>
-        </div>
-        <button class="btn-view" onclick="loadPatient('${p.id}')">查看</button>
-      </div>
-    `).join('');
-  }catch(e){
-    $("#results").innerHTML = "<div style='padding:10px;color:#c00'>搜尋失敗</div>";
-    $("#searchMsg").textContent = "";
-    console.error(e);
-  }
-};
-
-// 點某位病人 → 載入 summary 與 ARAT
-async function loadPatient(id){
-  $("#summary").textContent = "載入中…";
-  $("#arat").textContent    = "載入中…";
-  try{
-    const s = await fetch(`${API}/patient/${id}/summary`).then(r=>r.json());
-    $("#summary").textContent = fmt(s);
-    const a = await fetch(`${API}/patient/${id}/arat`).then(r=>r.json());
-    $("#arat").textContent = fmt(a);
-  }catch(e){
-    $("#summary").textContent = "{ 讀取失敗 }";
-    $("#arat").textContent    = "{ 讀取失敗 }";
-    console.error(e);
-  }
-}
-
-// 進頁面先幫你查一次（可改成空白）
-$("#kw").value = "smith";
-$("#btnSearch").click();
-</script>
-
+  </script>
 </body>
 </html>

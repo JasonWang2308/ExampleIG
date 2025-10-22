@@ -3,34 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Robohand App — 授權回調</title>
-  <style>
-    body{font-family:system-ui;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;background:#fafafa;}
-    .msg{font-size:1.2rem;color:#333}
-  </style>
+  <title>ExampleIG — Callback</title>
+  <script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
 </head>
-<body>
-  <div class="msg" id="msg">授權中，請稍候...</div>
-<script>
-const API = "http://127.0.0.1:5000/api";
-
-(async()=>{
-  const params = new URLSearchParams(window.location.search);
-  const code = params.get("code");
-  if(!code){
-    document.getElementById("msg").textContent = "缺少授權碼。";
-    return;
-  }
-  try{
-    const res = await fetch(`${API}/oauth/callback?code=${encodeURIComponent(code)}`);
-    const text = await res.text();
-    console.log("callback response:", text);
-    document.getElementById("msg").textContent = "登入成功，正在返回主頁...";
-    setTimeout(()=> window.location.href="index.html", 1500);
-  }catch(e){
-    document.getElementById("msg").textContent = "授權過程失敗：" + e;
-  }
-})();
-</script>
+<body style="font-family:system-ui;padding:40px;text-align:center;">
+  <h2>🔐 處理授權中...</h2>
+  <p id="msg">請稍候。</p>
+  <script>
+    // 授權完成後，轉向主頁
+    FHIR.oauth2.ready().then(client => {
+      document.getElementById("msg").innerText = "授權成功，準備進入應用程式...";
+      setTimeout(() => window.location.href = "index.html", 1000);
+    }).catch(e => {
+      document.getElementById("msg").innerText = "授權失敗：" + e;
+      console.error(e);
+    });
+  </script>
 </body>
 </html>
