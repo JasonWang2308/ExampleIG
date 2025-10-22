@@ -4,38 +4,41 @@
   <meta charset="utf-8" />
   <title>ExampleIG — 病歷摘要（o_index 風格｜GitHub 版）</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- 只依賴 fhir-client，前端直接連 SMART Sandbox -->
   <script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
   <style>
-    :root{
-      --bg:#0b1220;--panel:#0f172a;--line:#1f2a44;--muted:#94a3b8;--text:#e2e8f0;--accent:#60a5fa
-    }
+    :root{ --bg:#0b1220;--panel:#0f172a;--line:#1f2a44;--muted:#94a3b8;--text:#e2e8f0;--accent:#60a5fa }
     *{box-sizing:border-box}
     body{margin:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui}
-    /* ── o_index 風格：上方工具列 ───────────────────────── */
+
+    /* 工具列（換成雙 icon） */
     .toolbar{
       display:flex;align-items:center;gap:12px;padding:12px 16px;
       border-bottom:1px solid var(--line);background:rgba(15,23,42,.7);
       position:sticky;top:0;backdrop-filter:blur(6px);z-index:10
     }
-    .brand{font-weight:700;letter-spacing:.3px}
+    .brand-logos{display:flex;align-items:center;gap:10px}
+    .brand-logos img{height:28px;object-fit:contain;display:block;filter:drop-shadow(0 0 0 rgba(0,0,0,0))}
     .sep{width:1px;height:20px;background:var(--line);margin:0 6px}
     .status{font-size:13px;color:var(--muted)}
     .btn{background:#1f2937;border:1px solid #334155;color:var(--text);border-radius:10px;padding:8px 12px;cursor:pointer}
     .btn:disabled{opacity:.6;cursor:not-allowed}
     .spacer{flex:1}
     .link{color:var(--accent);text-decoration:none}
-    /* ── 兩欄佈局：左列表 + 右詳情 ─────────────────────── */
+
+    /* 兩欄佈局 */
     .wrap{display:grid;grid-template-columns:360px 1fr;gap:14px;max-width:1280px;margin:16px auto;padding:0 16px}
     @media (max-width:960px){.wrap{grid-template-columns:1fr}}
     .panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:12px}
     .searchRow{display:flex;gap:8px}
     input[type="text"]{flex:1;background:#0b1220;border:1px solid var(--line);border-radius:12px;padding:10px 12px;color:var(--text)}
-    .list{display:flex;flex-direction:column;gap:8px;max-height:64vh;overflow:auto;margin-top:10px}
+
+    /* 左側清單：調高上限高度，滑輪挑選 */
+    .list{display:flex;flex-direction:column;gap:8px;max-height:72vh;overflow:auto;margin-top:10px}
     .item{border:1px solid var(--line);border-radius:12px;padding:10px;cursor:pointer}
     .item:hover{border-color:#334155;background:#0b1220}
     .muted{color:var(--muted);font-size:13px}
     .warn{display:none;margin-top:10px;background:#fff3cd;color:#664d03;border:1px solid #eab308;padding:10px;border-radius:10px}
+
     .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
     .kv{border:1px dashed var(--line);border-radius:12px;padding:8px;font-size:14px}
     .subttl{margin:14px 0 8px}
@@ -44,9 +47,12 @@
   </style>
 </head>
 <body>
-  <!-- 工具列（維持 o_index 的操作感） -->
+  <!-- 工具列：文字品牌 → 兩個 icon -->
   <div class="toolbar">
-    <div class="brand">ExampleIG / 病歷摘要</div>
+    <div class="brand-logos">
+      <img src="logo_fubon.png" alt="Fubon Biomed" />
+      <img src="logo_rehabotics.png" alt="Rehabotics" />
+    </div>
     <div class="sep"></div>
     <button id="btnToLaunch" class="btn" title="回授權入口">回到 Launch</button>
     <button id="btnReload" class="btn" title="重新整理頁面">重新整理</button>
@@ -83,8 +89,8 @@
           <div class="kv"><div class="muted">生日</div><div id="ptBirth">—</div></div>
         </div>
 
-        <h3 class="subttl">量表摘要（QuestionnaireResponse）</h3>
-        <div id="qrList" class="list" style="max-height:32vh"></div>
+        <h3 id="qrTitle" class="subttl">量表摘要（QuestionnaireResponse）</h3>
+        <div id="qrList" class="list" style="max-height:40vh"></div>
       </div>
     </div>
   </div>
@@ -100,6 +106,7 @@
     const detailWrap = $("#detail");
     const btnSearch = $("#btnSearch");
     const qEl = $("#q");
+    const qrTitle = $("#qrTitle");
 
     // ===== 全域狀態 =====
     let client = null;
@@ -122,9 +129,23 @@
       }
     })();
 
-    // ===== 搜尋病人（維持 o_index 上方搜尋 + 左側列表的體驗）=====
+    // ===== 搜尋病人 =====
     btnSearch.onclick = doSearch;
     qEl.addEventListener("keydown", e => { if(e.key==="Enter") doSearch(); });
+
+    // ② 把病人「全部列出來」：遞迴追 next 直到抓完
+    async function fetchAllPatientsByName(name){
+      let url = `Patient?name=${encodeURIComponent(name)}&_count=100`;
+      const results = [];
+      while (url){
+        const bundle = await client.request(url, {flat:false});
+        const items = (bundle.entry||[]).map(e=>e.resource).filter(r=>r.resourceType==="Patient");
+        results.push(...items);
+        const next = (bundle.link||[]).find(l=>l.relation==="next")?.url;
+        url = next || null;
+      }
+      return results;
+    }
 
     async function doSearch(){
       if(!client){
@@ -137,9 +158,7 @@
       btnSearch.disabled = true;
       patientListEl.innerHTML = `<div class="muted">搜尋中…</div>`;
       try{
-        // 直打 FHIR：Patient by name
-        const bundle = await client.request(`Patient?name=${encodeURIComponent(key)}&_count=20`, {flat:false});
-        const pats = (bundle.entry||[]).map(e=>e.resource).filter(r=>r.resourceType==="Patient");
+        const pats = await fetchAllPatientsByName(key);
         renderPatientList(pats);
       }catch(err){
         console.error(err);
@@ -176,24 +195,36 @@
       emptyHint.style.display = "none";
       detailWrap.style.display = "block";
 
-      // 病人卡片
+      // ① 點病人 → 搜尋框自動填姓氏（family），並優先顯示量表
+      const family = (p.name?.[0]?.family || "").trim();
+      if (family) qEl.value = family;
+
       $("#ptTitle").textContent = formatName(p.name?.[0]) || "(未命名)";
       $("#ptGender").textContent = p.gender || "—";
       $("#ptBirth").textContent  = p.birthDate || "—";
       $("#ptMeta").textContent   = p.id ? `ID: ${p.id}` : "—";
-
-      // JSON 檢視
       $("#btnShowPatientJson").onclick = ()=> showJson(p);
 
-      // 量表列表
+      // 先把量表區塊捲到視野，營造「先顯示量表」的體驗
+      setTimeout(()=> qrTitle.scrollIntoView({behavior:"smooth", block:"start"}), 50);
+
+      // 載入量表
       qrListEl.innerHTML = `<div class="muted">載入量表中…</div>`;
       try{
-        // 直打 FHIR：QuestionnaireResponse by patient
         const bundle = await client.request(
-          `QuestionnaireResponse?patient=${encodeURIComponent(p.id)}&_count=50&_sort=-_lastUpdated`,
+          `QuestionnaireResponse?patient=${encodeURIComponent(p.id)}&_count=100&_sort=-_lastUpdated`,
           {flat:false}
         );
         currentQRs = (bundle.entry||[]).map(e=>e.resource).filter(r=>r.resourceType==="QuestionnaireResponse");
+
+        // 若伺服器還有下一頁，也把它們抓進來
+        let nextUrl = (bundle.link||[]).find(l=>l.relation==="next")?.url;
+        while (nextUrl){
+          const b2 = await client.request(nextUrl, {flat:false});
+          currentQRs.push(...(b2.entry||[]).map(e=>e.resource).filter(r=>r.resourceType==="QuestionnaireResponse"));
+          nextUrl = (b2.link||[]).find(l=>l.relation==="next")?.url || null;
+        }
+
         $("#btnShowAllQRJson").onclick = ()=> showJson(currentQRs);
         renderQRList(currentQRs);
       }catch(err){
@@ -211,7 +242,7 @@
       for(const qr of qrs){
         const authored = qr.authored || "—";
         const qRef = qr.questionnaire || "—";
-        const brief = extractScore(qr) ?? "—"; // 嘗試抓總分/摘要（可換成你 IG 的固定 linkId）
+        const brief = extractScore(qr) ?? "—";
         const dom = document.createElement("div");
         dom.className = "item";
         dom.innerHTML = `
@@ -224,7 +255,7 @@
       }
     }
 
-    // ===== 小工具（保留 o_index 操作感：查看 JSON 等）=====
+    // ===== 小工具 =====
     function showJson(obj){
       const w = window.open("","_blank");
       w.document.write(`<pre class="code" style="white-space:pre-wrap;word-break:break-word;padding:16px;background:#0b1220;color:#cbd5e1;margin:0">${escapeHtml(JSON.stringify(obj,null,2))}</pre>`);
@@ -238,18 +269,13 @@
     function shortRef(ref){
       if(!ref) return "Questionnaire —";
       const s = String(ref);
-      try{
-        if(/^http/i.test(s)) return new URL(s).pathname.split("/").pop() || s;
-      }catch{}
+      try{ if(/^http/i.test(s)) return new URL(s).pathname.split("/").pop() || s; }catch{}
       return s.split("/").pop() || s;
     }
     function escapeHtml(str){
-      return String(str).replace(/[&<>"']/g, s => ({
-        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-      }[s]));
+      return String(str).replace(/[&<>"']/g, s => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[s]));
     }
-    // 嘗試從 linkId 名稱包含 total/score/sum 的 item 取值
-    // ※ 若你的 IG 有固定的 linkId（例如 ARAT.totalScore），把條件改成精準比對更穩
+    // 嘗試從 linkId 名稱包含 total/score/sum 的 item 取值（若你有固定 linkId 可改成精準比對）
     function extractScore(qr){
       const walk = items => {
         if(!items) return null;
